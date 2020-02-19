@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MES Showcase</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+  <button id="fullscreen" onclick="goFullscreen()" style="visibility: hidden;">full screen</button>
+  <app-root></app-root>
+  
+</body>
+<script>
+    function goFullscreen() {
+        // Must be called as a result of user interaction to work
+        mf = document.getElementById("main_frame");
+        mf.webkitRequestFullscreen();
+        mf.style.display=" ";
+    }
+    function fullscreenChanged() {
+        if (document.webkitFullscreenElement == null) {
+            mf = document.getElementById("main_frame");
+            mf.style.display="block";
+        }
+    }
+    document.onwebkitfullscreenchange = fullscreenChanged;
+    // document.documentElement.onclick = goFullscreen;
+    document.onkeydown = goFullscreen;
+    setTimeout(() => {
+      // document.getElementById("fullscreen").click();
+      goFullscreen()
+      console.log('clicked')
+  }, 2000)
+ 
+</script>
+</html>

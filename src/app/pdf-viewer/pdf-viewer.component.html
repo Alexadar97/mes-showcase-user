@@ -1,0 +1,16 @@
+<div id="main_frame">
+  <ng-container *ngIf="showtype=='pdf'">
+    <div *ngIf="isLoaded" style="text-align: center;">
+      <button (click)="prevPage()" [disabled]="page === 1">Prev</button>
+      <span>{{ page }} / {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="page === totalPages">Next</button>
+    </div>
+    <pdf-viewer src="assets/img/daimler-future-inside-2018-en.pdf" [show-all]="false" [page]="page"
+      (after-load-complete)="afterLoadComplete($event)"></pdf-viewer>
+  </ng-container>
+  <video  *ngIf="showtype=='video'" autoplay (ended)="videoend()" class="vid">
+    <source src="assets/img/171124_H1_006.mp4" type="video/mp4">
+  </video>
+  <img class="img-fluid" src="assets/img/Daimler_CI_Branding.jpg" *ngIf="showtype=='image'">
+</div>
+
